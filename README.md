@@ -6,4 +6,4 @@ This is a repository of all the projects that I have created in order to learn C
 
 ### Logs:
 - 8/30/2026: Made a bash file to run things at once
-- 8/30/2026: Made tic tac toe
+- 8/30/2026: Made rock paper scissors
