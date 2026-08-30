@@ -2,17 +2,30 @@
 
 # Run C Fast
 
-t_run="run"
+base_dir="/home/samson/Coding-WSL/CLearning/"
 
 if [[ -z "$1" ]]; then
     echo "Missing arg: running file path"
     exit
 fi
 
-if [[ -n "$2" ]]; then
-    t_run="$2"
-fi
+scripts=""
 
-gcc "$1" -o ${t_run} && "./${t_run}"
+for arg in "$@"
+do
+    if [[ -d "$arg" ]]; then
+        for file in "$arg"/*.c;
+        do
+            [[ -n "$scripts" ]] && scripts+=" "
+            scripts+="$base_dir$file"
+            
+        done
+    elif [[ "$arg" == *.c ]]; then 
+        [[ -n "$scripts" ]] && scripts+=" "
+        scripts+="$base_dir$arg"
+    fi
+done
+
+gcc "$scripts" -o run && "./run"
 
 echo

@@ -67,7 +67,7 @@ int main() {
                 choices[r][2] = ' ';
             }
         }
-        printf("\n");
+        printf("\n\n\n");
         printf("Lets play Rock Paper Scissors!\n");
         for (int i = 0; i < 3; i ++) {
             printf("%s\n", choices[i]);
