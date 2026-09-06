@@ -10,12 +10,10 @@
 #define RESET
 
 bool checkIfEnd(int *board[], bool *winner);
-void makeInGameRender(int (*board)[3][3], bool player, int *sr, int *sc, char (*lines)[20][200]);
-void render(char (*lines)[20][200]);
-void initBord(int arr[3][3]);
+void makeInGameRender(int (*board)[][], bool player, int *sr, int *sc, char (*lines)[][]);
+void makeDialogueRender(char *prompt, char *options[5], int *r, int *c, char (*lines)[][]);
+void render(char (*lines)[][]);
+void initBord(int arr[][]);
 void handleMovement(int *r, int *c, int *rmax, int *cmax, bool (*canMove)(void));
-void handleSelectionDialogue(int *r, int *c, void (*nextFunction[])(void));
-int handleSelectionIngame(int *r, int *c, void (*select)(int, int));
-typedef struct {
-    int (*runThese[5])(int, int);
-} gameStep;
+void handleSelectionDialogue(int *r, int *c, int *player);
+void handleSelectionIngame(int *r, int *c, void (*select)(int, int));
