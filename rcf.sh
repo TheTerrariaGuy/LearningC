@@ -9,23 +9,21 @@ if [[ -z "$1" ]]; then
     exit
 fi
 
-scripts=""
+scripts=()
 
 for arg in "$@"
 do
     if [[ -d "$arg" ]]; then
         for file in "$arg"/*.c;
         do
-            [[ -n "$scripts" ]] && scripts+=" "
-            scripts+="$base_dir$file"
+            scripts+=("$base_dir$file")
             
         done
     elif [[ "$arg" == *.c ]]; then 
-        [[ -n "$scripts" ]] && scripts+=" "
-        scripts+="$base_dir$arg"
+        scripts+=("$base_dir$arg")
     fi
 done
 
-gcc "$scripts" -o run && "./run"
+gcc "${scripts[@]}" -o run && "./run"
 
 echo
